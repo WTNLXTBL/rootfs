@@ -10,12 +10,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: build-rootfs
         run: |
-         sudo su
-         apt update
-         apt install debootstrap wget tar
-         wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh
-         chmod +x debootstrap
-         ./debootstrap aarch64 ./rootfs/debian
+         sudo apt update
+         sudo apt install debootstrap wget tar
+         sudo wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh
+         sudo chmod +x debootstrap
+         sudo ./debootstrap aarch64 ./rootfs/debian
  
  
       - name: upload
