@@ -13,7 +13,8 @@ jobs:
          sudo apt update
          sudo apt-get install qemu-user-static debian-archive-keyring debootstrap
          sudo mkdir -p ./rootfs/debian
-         sudo qemu-debootstrap --arch=aarch64 --variant=minbase --include=busybox,systemd,libsystemd0,wget,ca-certificates,busybox-static bullseye ./rootfs/debian http://deb.debian.org/debian
+         #sudo qemu-debootstrap --arch=aarch64 --variant=minbase --include=busybox,systemd,libsystemd0,wget,ca-certificates,busybox-static bullseye ./rootfs/debian http://deb.debian.org/debian
+         sudo debootstrap --arch=arm64 --foreign bullseye ./rootfs/debian http://deb.debian.org/debian
          sudo tar cJf ./rootfs/rootfs.tar.xz ./rootfs/debian/*
          sudo rm -rf ./rootfs/debian
  
