@@ -1,21 +1,24 @@
-name: rootfs
+name: Package
 on:
- workflow_dispatch:
+  #release:
+    #types: [ published ]
+    workflow_dispatch:
 jobs:
- build:
- runs-on: ubuntu-latest
- steps:
-  - uses: actions/checkout@v2
-  - name: build-rootfs
-  run: |
-  apt update
-  apt install debootstrap wget tar
-  wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh
-  chmod +x debootstrap
-  ./debootstrap aarch64 ./rootfs/debian
+  rootfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build-rootfs
+        run: |
+         apt update
+         apt install debootstrap wget tar
+         wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh
+         chmod +x debootstrap
+         ./debootstrap aarch64 ./rootfs/debian
  
-- name: upload
-  uses: actions/upload-artifact@v3
-   with:
-   name: rootfs.tar.xz
-   path: ./rootfs
+ 
+      - name: upload
+      - uses: actions/upload-artifact@v3
+        with:
+         name: rootfs.tar.xz
+         path: ./rootfs
