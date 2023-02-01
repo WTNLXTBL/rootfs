@@ -12,7 +12,7 @@ jobs:
         run: |
          sudo apt update
          sudo apt install debootstrap wget tar
-         sudo wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh
+         sudo wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh >./debootstrap.sh
          sudo chmod +x debootstrap.sh
          sudo ./debootstrap.sh aarch64 ./rootfs/debian
  
