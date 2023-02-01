@@ -12,10 +12,13 @@ jobs:
         run: |
          sudo apt update
          sudo apt install debootstrap wget tar
-         sudo wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh >./debootstrap.sh
-         sudo chmod +x debootstrap.sh
-         sudo ./debootstrap.sh aarch64 ./rootfs/debian
- 
+         #sudo wget https://raw.githubusercontent.com/EXALAB/Anlinux-Resources/master/Scripts/Bootstrap/Debian/bootstrap.sh >./debootstrap.sh
+         #sudo chmod +x debootstrap.sh
+         #sudo ./debootstrap.sh aarch64 ./rootfs/debian
+         mkdir ./rootfs/debian
+         qemu-debootstrap --arch=aarch64 --variant=minbase --include=busybox,systemd,libsystemd0,wget,ca-certificates,busybox-static bullseye ./rootfs/debian http://deb.debian.org/debian
+         tar cJf ./rootfs/rootfs.tar.xz ./rootfs/debian/*
+         rm -rf ./rootfs/debian
  
       - name: upload
         uses: actions/upload-artifact@v3
