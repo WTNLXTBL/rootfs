@@ -15,6 +15,7 @@ jobs:
          sudo mkdir -p ./rootfs/debian
          sudo debootstrap --arch=arm64 --foreign sid ./rootfs/debian http://deb.debian.org/debian
          cd ./rootfs/debian
+         sudo rm -rf debootstrap
          sudo tar cJf ../rootfs.tar.xz ./*
          sudo rm -rf ./*
  
