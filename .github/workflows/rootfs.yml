@@ -2,7 +2,9 @@ name: Rootfs
 on:
   #release:
     #types: [ published ]
-    workflow_dispatch:
+    #workflow_dispatch:
+    schedule:
+    - cron: '0 8 * * *'
 jobs:
   rootfs:
     runs-on: ubuntu-latest
