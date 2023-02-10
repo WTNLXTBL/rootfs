@@ -38,7 +38,7 @@ jobs:
 
          sudo rm -rf debootstrap
          
-         sudo chmod 775 *
+         sudo chmod -R 775 *
 
          #sudo tar cJf ../rootfs.tar.xz ./*
 
